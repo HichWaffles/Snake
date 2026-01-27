@@ -39,10 +39,17 @@ int main() {
 
     enable_raw_mode();
     hide_cursor();
+
     while (!lost && !won) {
       clock_t start_time = clock();
 
-      parse_input(get_user_input(), &direction, &lost);
+      poll_input();
+
+      int key;
+      while ((key = get_user_input()) != -1) {
+        parse_input(key, &direction, &lost);
+      }
+
       Vector original_head = get_head(snake, last_snake_index);
       Vector new_head =
           project_head(snake, first_snake_index, last_snake_index, direction);
@@ -100,16 +107,18 @@ int main() {
     int new_highscore = check_and_update_highscore();
 
     clscreen();
-    printf("Game Over! Your score: %d\n", get_score());
+    printf(won ? "You won! Now go touch grass..." : "Game Over!");
+    printf(" Your score: %d\n", get_score());
     if (new_highscore)
       printf("New Highscore!\n");
 
     printf("Press 'r' to restart or 'q' to quit.\n");
 
-    char choice;
-    do {
+    int choice = -1;
+    while (choice != 'r' && choice != 'q') {
+      poll_input();
       choice = get_user_input();
-    } while (choice != 'r' && choice != 'q');
+    }
     should_exit = (choice == 'q');
   }
 
