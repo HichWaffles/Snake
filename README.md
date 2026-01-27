@@ -7,7 +7,7 @@ A classic Snake game implemented in C for the terminal. The game loop is optimiz
 ## Building
 
 ```bash
-gcc *.c -o snake
+gcc src/*.c -o snake
 ```
 
 ## Running
