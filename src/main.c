@@ -77,8 +77,11 @@ int main() {
         case CELL_FOOD:
           update_score(1);
           update_score_display();
-          spawn_food(matrix, board_map, board_map_index,
-                     get_length(first_snake_index, last_snake_index));
+          won =
+              get_length(first_snake_index, last_snake_index) == HEIGHT * WIDTH;
+          if (!won)
+            spawn_food(matrix, board_map, board_map_index,
+                       get_length(first_snake_index, last_snake_index));
           break;
         case CELL_EMPTY:
           pop_tail(snake, &first_snake_index, last_snake_index, board_map_index,
@@ -88,8 +91,6 @@ int main() {
           lost = 1;
           break;
       }
-
-      won = get_length(first_snake_index, last_snake_index) == HEIGHT * WIDTH;
 
       clock_t end_time = clock();
       double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
