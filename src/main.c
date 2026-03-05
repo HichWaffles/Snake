@@ -12,7 +12,7 @@
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
-int main() {
+int main(void) {
   // These allocations can be optimized later 🤡
   char** matrix = (char**)malloc(HEIGHT * sizeof(char*));
   for (int i = 0; i < HEIGHT; i++) {

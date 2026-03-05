@@ -38,12 +38,12 @@ void update_index(char** matrix, Vector pos, char value) {
   fflush(stdout);
 }
 
-void clscreen() {
+void clscreen(void) {
   printf("\033[2J");
   move_cursor(1, 1);
 }
 
-void update_score_display() {
+void update_score_display(void) {
   int score = get_score();
   int high = get_highscore();
   int current_high = (score > high) ? score : high;

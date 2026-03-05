@@ -3,7 +3,7 @@
 int score = 0;
 int highscore = -1;
 
-int get_highscore() {
+int get_highscore(void) {
   if (highscore != -1)
     return highscore;
 
@@ -28,7 +28,7 @@ int set_highscore(int score) {
   return 0;
 }
 
-int check_and_update_highscore() {
+int check_and_update_highscore(void) {
   int highscore = get_highscore();
   if (score > highscore) {
     set_highscore(score);
@@ -41,10 +41,10 @@ void update_score(int points) {
   score += points;
 }
 
-int get_score() {
+int get_score(void) {
   return score;
 }
 
-void reset_score() {
+void reset_score(void) {
   score = 0;
 }

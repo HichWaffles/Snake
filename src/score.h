@@ -28,11 +28,11 @@ static CellType get_cell_type(char cell) {
   }
 }
 
-int get_highscore();
-int check_and_update_highscore();
+int get_highscore(void);
+int check_and_update_highscore(void);
 void update_score(int points);
-int get_score();
-void reset_score();
+int get_score(void);
+void reset_score(void);
 int get_length(int first_snake_index, int last_snake_index);
 
 #endif
